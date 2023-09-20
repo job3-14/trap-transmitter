@@ -1,6 +1,7 @@
 from machine import Pin, I2C, UART
 import time
 import utime
+import config
 
 #LED制御
 led = machine.Pin(25, machine.Pin.OUT)
@@ -8,10 +9,6 @@ led.value(1)
 
 # UART番号とボーレートを指定
 uart = UART(0, 115200)
-
-# 製品記号+バージョン+個体識別番号(v1は10桁)
-data = 'j314trp+v1+FnEC3r9ptE'.encode('utf-8')
-hexData = data.hex()
 
 
 #通信モジュールからのメッセージを受信(シリアル通信)
@@ -55,15 +52,15 @@ def lora_rx():
     while True:
         uart.write("p2p rx 50\r") #キャリアセンス
         if 'radio_err_timeout' in recive():
-            uart.write(f"p2p tx {hexData}\r") #送信
+            uart.write(f"p2p tx {config.HEX_DATA}\r") #送信
             recive()
-            uart.write("mod sleep 0 0 10\r") #Loraモジュールの省電力状態にする
+            uart.write("mod sleep 0 0 60\r") #Loraモジュールの省電力状態にする
             recive()
             break
         else:
             utime.sleep(0.05)
-    machine.lightsleep(10001)
-    utime.sleep(0.01)
+    machine.lightsleep(60000)
+    utime.sleep(0.1)
 
 
 
