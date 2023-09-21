@@ -60,7 +60,7 @@ def lora_rx():
         else:
             utime.sleep(0.05)
     machine.lightsleep(config.SENDING_SENSE_MS) #RASPIを省電力状態にする
-    utime.sleep(0.1) #起動直後は不安定なため待機
+    utime.sleep(0.3) #起動直後は不安定なため待機
 
 
 
