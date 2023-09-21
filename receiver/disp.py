@@ -9,6 +9,7 @@ i2c = busio.I2C(board.GP17, board.GP16)  # (SCL端子, SDA端子)
 #  液晶画面設定
 display = adafruit_ssd1306.SSD1306_I2C(128, 64, i2c, addr=0x3C) # 画面サイズ幅,  高さ, 通信仕様, デバイスアドレス
 
+
 # 引数に表示したいアドレス(0~99)の配列を指定するとOLEDに出力
 # 表示可能な配列は最大8個
 def showAdress(addressList):
@@ -28,5 +29,3 @@ def showAdress(addressList):
    
     #display.text('receiving.......', 0, 57, 1, font_name="font5x8.bin", size=1)
     display.show()  # 画面表示実行
-
-#showAdress([0,1,2,99,12,13,15])
