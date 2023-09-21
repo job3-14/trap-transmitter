@@ -2,6 +2,7 @@ import board
 import busio
 import digitalio
 import adafruit_ssd1306
+import time
 
 # I2C 通信設定
 i2c = busio.I2C(board.GP17, board.GP16)  # (SCL端子, SDA端子)
@@ -32,7 +33,7 @@ def showAdress(addressList):
 
 def boot():
     display.fill(0) # 画面表示初期化
-    display.text('booting...', 0, 0, 1, font_name="font5x8.bin", size=2)
+    display.text('Loading...', 0, 0, 1, font_name="font5x8.bin", size=2)
     display.show()  # 画面表示実行
 
 def receiving():
@@ -49,3 +50,5 @@ def error():
     display.vline(0, 15, 64, 1) # (x, y, 長さ, 1) 縦線
     display.vline(127, 16, 64, 1)
     display.show()  # 画面表示実行
+    while True:
+        time.sleep(9999999)
