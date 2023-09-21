@@ -18,7 +18,7 @@ def recive():
         buf = uart.read(100)
         utime.sleep(1)
         if buf != None:
-            print(buf)  #デバッグ時に使用!!!!!!!!!
+            #print(buf)  #デバッグ時に使用!!!!!!!!!
             return buf
     return
 
@@ -54,13 +54,13 @@ def lora_rx():
         if 'radio_err_timeout' in recive():
             uart.write(f"p2p tx {config.HEX_DATA}\r") #送信
             recive()
-            uart.write("mod sleep 0 0 60\r") #Loraモジュールの省電力状態にする
+            uart.write(f"mod sleep 0 0 {config.SENDING_SENSE}\r") #Loraモジュールの省電力状態にする
             recive()
             break
         else:
             utime.sleep(0.05)
-    machine.lightsleep(60000)
-    utime.sleep(0.1)
+    machine.lightsleep(config.SENDING_SENSE_MS) #RASPIを省電力状態にする
+    utime.sleep(0.1) #起動直後は不安定なため待機
 
 
 
