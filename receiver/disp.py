@@ -29,3 +29,23 @@ def showAdress(addressList):
    
     #display.text('receiving.......', 0, 57, 1, font_name="font5x8.bin", size=1)
     display.show()  # 画面表示実行
+
+def boot():
+    display.fill(0) # 画面表示初期化
+    display.text('booting...', 0, 0, 1, font_name="font5x8.bin", size=2)
+    display.show()  # 画面表示実行
+
+def receiving():
+    display.fill(0) # 画面表示初期化
+    display.text('receiving...', 0, 0, 1, font_name="font5x8.bin", size=2)
+    display.show()  # 画面表示実行
+
+def error():
+    display.fill(0) # 画面表示初期化
+    display.text('!!!error!!!', 0, 0, 1, font_name="font5x8.bin", size=2)
+    display.text('support\n@alecfoods\n.co.jp', 0, 15, 1, font_name="font5x8.bin", size=2)
+    display.hline(0, 15, 128, 1) # (x, y, 長さ, 1)横線
+    display.hline(0, 63, 128, 1)        
+    display.vline(0, 15, 64, 1) # (x, y, 長さ, 1) 縦線
+    display.vline(127, 16, 64, 1)
+    display.show()  # 画面表示実行
