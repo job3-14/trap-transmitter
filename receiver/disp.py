@@ -1,6 +1,6 @@
 import board
 import busio
-#import digitalio
+import digitalio
 import adafruit_ssd1306
 
 # I2C 通信設定
