@@ -2,6 +2,8 @@ import time
 import board
 import busio
 import binascii
+
+# 外部ファイル読み込み
 import disp
 import config
 
