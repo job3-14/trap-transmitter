@@ -35,7 +35,7 @@ def led_ok():
 def lora_setting():
     uart.write("mod factory_reset\r")
     recive()
-    uart.write("p2p set_freq 923200000\r")
+    uart.write("p2p set_freq 923500000\r")
     recive()
     uart.write("p2p set_pwr 13\r")
     recive()

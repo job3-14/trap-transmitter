@@ -19,7 +19,7 @@ try:
     disp.boot()
     uart.write(b'mod factory_reset\r\n')
     noneCheck(uart.read())
-    uart.write(b'p2p set_freq 923200000\r\n')
+    uart.write(b'p2p set_freq 923500000\r\n')
     noneCheck(uart.read())
     uart.write(b'p2p set_pwr 13\r\n')
     noneCheck(uart.read())
