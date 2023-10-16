@@ -19,7 +19,8 @@ try:
     disp.boot()
     uart.write(b'mod factory_reset\r\n')
     noneCheck(uart.read())
-    uart.write(b'p2p set_freq 923500000\r\n')
+    freq = str(config.frequency[config.channel])
+    uart.write(b'p2p set_freq ' + freq.encode() + b'\r\n') # encode()がダメかも動作未確認
     noneCheck(uart.read())
     uart.write(b'p2p set_pwr 13\r\n')
     noneCheck(uart.read())
