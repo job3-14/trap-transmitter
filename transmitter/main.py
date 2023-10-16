@@ -37,7 +37,7 @@ def lora_setting():
     recive()
     uart.write(f"p2p set_freq {config.frequency[config.channel]}\r") #周波数設定
     recive()
-    uart.write("p2p set_pwr 13\r")
+    uart.write(f"p2p set_pwr {config.pwr}\r") # 出力設定
     recive()
     uart.write("p2p set_sf 12\r")
     recive()
