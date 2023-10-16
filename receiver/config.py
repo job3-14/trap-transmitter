@@ -1,12 +1,14 @@
 # 設定ファイル(config.py)###############
 serial = 'FnEC3r9ptE'
+channel = 39 # 周波数チャンネル
+sync_10 = 100 #同期ワード
 ######################################
 version = 'v1' #プログラムバージョン
 callsign = 'j314trp'
-channel = 39 # 周波数チャンネル
 ######################################
 
 RECEIVE_ADDRESS = f'{callsign}+{version}+{serial}'
+SYNC = hex(sync_10)[2:] #動作未確認
 
 # 周波数リスト(チャンネル:周波数)
 # https://www.tele.soumu.go.jp/j/adm/system/ml/920mhz/index.htm (最終確認20231016)

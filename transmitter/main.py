@@ -45,6 +45,8 @@ def lora_setting():
     recive()
     uart.write("p2p set_cr 4/5\r")
     recive()
+    uart.write(f"p2p set_sync {config.SYNC}\r") #同期ワード
+    recive()
     return
 
 #送信処理

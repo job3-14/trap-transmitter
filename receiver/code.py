@@ -30,6 +30,9 @@ try:
     noneCheck(uart.read())
     uart.write(b'p2p set_cr 4/5\r\n')
     noneCheck(uart.read())
+    sync = str(config.SYNC)
+    uart.write(b'p2p set_sync ' + sync.encode() + b'\r\n') # encode()がダメかも動作未確認
+    noneCheck(uart.read())
     disp.receiving()
     receive_address_list =[]
     while True:
