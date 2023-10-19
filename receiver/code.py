@@ -8,6 +8,7 @@ import disp
 import config
 
 def noneCheck(uartString):
+    #print(uartString)
     if uartString is None:
         disp.error()
         
