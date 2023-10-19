@@ -50,13 +50,18 @@ def lora_setting():
     return
 
 #送信処理
-def lora_rx():
+# checking==1の場合は待機時間を1秒にする
+def lora_rx(checking):
+    if checking == 1:
+        sending_sense = 1
+    else:
+        sending_sense = config.SENDING_SENSE
     while True:
         uart.write("p2p rx 50\r") #キャリアセンス
         if 'radio_err_timeout' in recive():
             uart.write(f"p2p tx {config.HEX_DATA}\r") #送信
             recive()
-            uart.write(f"mod sleep 0 0 {config.SENDING_SENSE}\r") #Loraモジュールの省電力状態にする
+            uart.write(f"mod sleep 0 0 {sending_sense}\r") #Loraモジュールの省電力状態にする
             recive()
             break
         else:
@@ -69,7 +74,7 @@ def lora_rx():
 def main():
     try:    
         lora_setting()
-        lora_rx()
+        lora_rx(1)
     except:
         while True:
             led_ok() #エラー時
@@ -78,7 +83,7 @@ def main():
     # 送信
     while True:
         try:
-            lora_rx()
+            lora_rx(0)
         except:
             lora_setting()
 
