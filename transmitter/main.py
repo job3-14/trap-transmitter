@@ -68,8 +68,12 @@ def lora_rx(checking):
     while True:
         uart.write("p2p rx 50\r") #キャリアセンス
         if 'radio_err_timeout' in recive():
+            ut1 = time.time()
             uart.write(f"p2p tx {config.HEX_DATA}\r") #送信
             recive()
+            ut2 = time.time()
+            print("time",end="")
+            print(ut2-ut1)
             uart.write(f"mod sleep 0 0 {sending_sense}\r") #Loraモジュールの省電力状態にする
             recive()
             break
