@@ -2,6 +2,7 @@ from machine import Pin, I2C, UART
 import time
 import utime
 import config
+import random
 
 #LED制御
 led = machine.Pin(25, machine.Pin.OUT)
@@ -61,7 +62,9 @@ def lora_rx(checking):
     if checking == 1:
         sending_sense = 1
     else:
-        sending_sense = config.SENDING_SENSE
+        rand = random.randint(0, 5) #0~5秒間ランダムに待機時間を追加
+        sending_sense = config.SENDING_SENSE + rand
+        sending_sense_ms = config.SENDING_SENSE_MS + rand * 1000
     while True:
         uart.write("p2p rx 50\r") #キャリアセンス
         if 'radio_err_timeout' in recive():
@@ -72,7 +75,7 @@ def lora_rx(checking):
             break
         else:
             utime.sleep(0.05)
-    machine.lightsleep(config.SENDING_SENSE_MS) #RASPIを省電力状態にする
+    machine.lightsleep(sending_sense_ms) #RASPIを省電力状態にする
     utime.sleep(0.3) #起動直後は不安定なため待機
 
 
