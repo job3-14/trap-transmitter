@@ -31,6 +31,12 @@ try:
     noneCheck(uart.read())
     uart.write(b'p2p set_cr 4/5\r\n')
     noneCheck(uart.read())
+    uart.write(b'p2p set_prlen 12\r\n')  # プリアングル長
+    noneCheck(uart.read())
+    uart.write(b'p2p set_crc on\r\n')  # crc
+    noneCheck(uart.read())
+    uart.write(b'p2p set_iqi on\r\n')  # iq反転
+    noneCheck(uart.read())
     sync = str(config.SYNC)
     uart.write(b'p2p set_sync ' + sync.encode() + b'\r\n') # encode()がダメかも動作未確認
     noneCheck(uart.read())

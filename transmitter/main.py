@@ -45,6 +45,12 @@ def lora_setting():
     recive()
     uart.write("p2p set_cr 4/5\r")
     recive()
+    uart.write("p2p set_prlen 12\r") #プリアングル長
+    recive()
+    uart.write("p2p set_crc on\r") #crc
+    recive()
+    uart.write("p2p set_iqi on\r") #IQ反転
+    recive()
     uart.write(f"p2p set_sync {config.SYNC}\r") #同期ワード
     recive()
     return
