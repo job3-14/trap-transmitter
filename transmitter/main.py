@@ -72,7 +72,7 @@ def lora_rx(checking):
             uart.write(f"p2p tx {config.HEX_DATA}\r") #送信
             recive()
             ut2 = time.time()
-            print("time",end="")
+            print("time(s)",end="")
             print(ut2-ut1)
             uart.write(f"mod sleep 0 0 {sending_sense}\r") #Loraモジュールの省電力状態にする
             recive()
