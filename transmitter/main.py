@@ -61,6 +61,7 @@ def lora_setting():
 def lora_rx(checking):
     if checking == 1:
         sending_sense = 1
+        sending_sense_ms = 1000
     else:
         rand = random.randint(0, 5) #0~5秒間ランダムに待機時間を追加
         sending_sense = config.SENDING_SENSE + rand
@@ -98,9 +99,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-
-    
-
