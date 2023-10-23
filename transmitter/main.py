@@ -17,7 +17,7 @@ def recive():
     utime.sleep(1)
     for i in range(5):
         buf = uart.read(100)
-        utime.sleep(1)
+        utime.sleep(0.3)
         if buf != None:
             #print(buf)  #デバッグ時に使用!!!!!!!!!
             return buf
@@ -99,3 +99,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
